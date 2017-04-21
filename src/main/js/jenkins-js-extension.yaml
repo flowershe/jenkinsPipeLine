@@ -1,8 +1,0 @@
-# Extensions in this plugin
-extensions:
-  - component: PipelineEditorLink
-    extensionPoint: jenkins.blueocean.top.links
-  - component: EditorRoutes
-    extensionPoint: jenkins.main.routes
-  - component: components/editor/EditorCSS #Self-implemented, currently required to make the css load
-    extensionPoint: pipeline.editor.css

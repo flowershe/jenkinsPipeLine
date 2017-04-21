@@ -1,18 +1,19 @@
 pipeline {
-  agent { docker 'cloudbees/java-build-tools' }
-  stages {
-    stage('build') {
-      steps {
-        sh 'mvn clean install' 
-      }
+    agent none 
+    stages {
+        stage('Example Build') {
+            agent { docker 'maven:3-alpine' } 
+            steps {
+                echo 'Hello, Maven'
+                sh 'mvn --version'
+            }
+        }
+        stage('Example Test') {
+            agent { docker 'openjdk:8-jre' } 
+            steps {
+                echo 'Hello, JDK'
+                sh 'java -version'
+            }
+        }
     }
-  }
-  post {
-    success {
-      archive 'target/blueocean-pipeline-editor.hpi'
-    }
-    always {
-      junit 'target/**/*.xml'
-    }
-  }
 }
